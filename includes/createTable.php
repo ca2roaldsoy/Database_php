@@ -1,6 +1,6 @@
 <?php
 
-require "consoleDebug.php";
+require "consoleLog.php";
 
 $db = new mysqli("localhost", "root", "", "test2000");
 mysqli_select_db($db,"test2000");
