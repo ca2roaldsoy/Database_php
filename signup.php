@@ -4,7 +4,7 @@
 
     <main>
       <h1>Sign Up</h1>
-      
+
             <?php
                 // error messages
                 if(isset($_GET["error"])) {
@@ -21,8 +21,8 @@
                     else if($_GET["error"] == "passwordcheck") {
                         echo "<p>password do not match</p>";
                     }
-                    else if($_GET["error"] == "usertaken") {
-                        echo "<p>username already taken</p>";
+                    else if($_GET["error"] == "email_exists") {
+                        echo "<p>email already exists</p>";
                     }
                 }
             ?>

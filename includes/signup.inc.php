@@ -35,17 +35,45 @@ if(isset($_POST["signup-submit"])) {
     }
     else {
 
-        // insert to database
-        $sql = "INSERT INTO allusers(id, uidUsers, emailUsers, pwdUsers) VALUES(?, ?, ?, ?)";
-
-        // make password "unreadble"
-        $hashPwd = password_hash($password, PASSWORD_DEFAULT);
+        $sql = "SELECT uidUsers FROM allusers WHERE uidUsers=?";
 
         $statement = $db->prepare($sql);
-        $statement->bind_param("isss", $id, $username, $email, $hashPwd);
+        $statement->bind_param("s", $username);
         $statement->execute();
-            echo "<p><b>New user added</b></p>";
-            echo "<b>Sql:</b><pre>$sql</pre>";   
+     
+            $statement->store_result();
+            $statement->bind_result($username);
+            
+             //check if email already exists
+            $resultCheck = $statement->num_rows();
+            if ($resultCheck > 0) {
+                header("Location: ../signup.php?error=usertaken&mail=".$email);
+                exit();
+            }
+
+            else {
+
+                // insert to database
+                $sql = "INSERT INTO allusers(id, uidUsers, emailUsers, pwdUsers) VALUES(?, ?, ?, ?)";
+        
+                $statement = $db->prepare($sql);
+        
+                if (!$db->prepare($sql)) {
+                    header("Location: ../signup.php?error=sqlerror");
+                    exit();
+                } else {
+                    $statement->fetch();
+
+                    // make password "unreadble"
+                    $hashPwd = password_hash($password, PASSWORD_DEFAULT);
+
+                    $statement = $db->prepare($sql);
+                    $statement->bind_param("isss", $id, $username, $email, $hashPwd);
+                    $statement->execute();
+                    echo "<p><b>New user added</b></p>";
+                    echo "<b>Sql:</b><pre>$sql</pre>";
+                }
+            }
     }
 }
 
