@@ -29,7 +29,6 @@ if (isset($_POST["login-submit"])) {
             header("Location: ../user.php?login=success");
             $_SESSION["userId"] = $userMail;
             $_SESSION["pass"] = $userPwd;
-            
             exit();
         }
         else {
