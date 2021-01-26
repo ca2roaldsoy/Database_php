@@ -5,8 +5,8 @@ if (isset($_POST["login-submit"])) {
     $mailuid = $_POST["mailuid"];
     $password = $_POST["pwd"];
 
-    require_once "dbhandler.inc.php";
-    require_once "consoleDebug.php";
+    require_once "connectDatabase.php";
+    require_once "consoleLog.php";
 
     $db = connect();
 

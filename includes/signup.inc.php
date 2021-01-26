@@ -2,7 +2,7 @@
 
 if(isset($_POST["signup-submit"])) {
 
-    include "connect.php";
+    include "connectDatabase.php";
 
     $db = connect();
 
