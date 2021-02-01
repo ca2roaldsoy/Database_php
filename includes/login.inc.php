@@ -7,6 +7,7 @@ if (isset($_POST["login-submit"])) {
 
     require_once "connectDatabase.php";
     require_once "consoleLog.php";
+    include "../user.php";
 
     $db = connect();
 
@@ -29,6 +30,7 @@ if (isset($_POST["login-submit"])) {
             header("Location: ../user.php?login=success");
             $_SESSION["userId"] = $userMail;
             $_SESSION["pass"] = $userPwd;
+            user($userId, $userMail, $password);
             exit();
         }
         else {
