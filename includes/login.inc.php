@@ -12,25 +12,25 @@ if (isset($_POST["login-submit"])) {
     $db = connect();
 
     if (empty($mailuid) || empty($password)) {
-        header("Location: ../signup.php?error=emptyfields");
+        header("Location: ../index.php?error=emptyinputs");
         exit();
     }
     
-    $stmt = $db->prepare("SELECT id, emailUsers, pwdUsers FROM allusers WHERE emailUsers=?;");
+    $stmt = $db->prepare("SELECT id, uidUsers, emailUsers, pwdUsers FROM allusers WHERE emailUsers=?;");
     $stmt->bind_param("s", $mailuid);
 
     $stmt->execute();
     $stmt->store_result();
-    $stmt->bind_result($userId, $userMail, $userPwd);
+    $stmt->bind_result($userId, $userName, $userMail, $userPwd);
 
     if($stmt->num_rows() == 1) {
         $stmt->fetch();
         if(password_verify($password, $userPwd)) {
-            session_start();
-            header("Location: ../user.php?login=success");
+            
             $_SESSION["userId"] = $userMail;
             $_SESSION["pass"] = $userPwd;
-            user($userId, $userMail, $password);
+
+            user($userId, $userName, $userMail, $password);
             exit();
         }
         else {
@@ -52,6 +52,6 @@ if (isset($_POST["login-submit"])) {
 }
 else {
 
-    header("Location: ../signup.php");
+    header("Location: ../index.php");
     exit();
 }
