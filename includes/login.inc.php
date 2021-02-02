@@ -36,7 +36,7 @@ if (isset($_POST["login-submit"])) {
         else {
             $_SESSION = [];
             session_destroy();
-            header("Location: ../signup.php?error=invalidpassword");
+            header("Location: ../signup.php?error=wrongpassword");
             exit();
         }
     }

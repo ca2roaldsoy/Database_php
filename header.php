@@ -25,7 +25,7 @@
             if($_GET["error"] == "emptyinputs") {
                 echo "<p class='error'> Fill in all fields</p>";
             }
-            else if($_GET["error"] == "invalidpassword") {
+            else if($_GET["error"] == "wrongpassword") {
                 echo "<p class='error'>Wrong password</p>";
             }
             else if($_GET["error"] == "nouserfound") {

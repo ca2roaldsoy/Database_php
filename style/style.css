@@ -25,6 +25,12 @@ h1 {
 }
 
 .error {
-    color: red;
+    color: darkred;
     font-weight: 600;
+    margin: 0;
+    padding: 0;
+}
+
+.error > li {
+    margin-left: 20px;
 }

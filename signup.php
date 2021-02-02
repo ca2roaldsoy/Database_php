@@ -18,6 +18,15 @@
                     else if($_GET["error"] == "invalidemail") {
                         echo "<p class='error'>invalid email</p>";
                     }
+                    else if($_GET["error"] == "invalidpassword") {
+                        echo " 
+                            <ul class='error'>Password must contain of least:
+                                <li>one uppercase letter</li>
+                                <li>one lowercase letter</li>
+                                <li>one digit</li>
+                                <li>8 characters</li>
+                            </ul>";
+                    }
                     else if($_GET["error"] == "passwordcheck") {
                         echo "<p class='error'>password do not match</p>";
                     }

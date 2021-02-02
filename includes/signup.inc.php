@@ -29,6 +29,10 @@ if(isset($_POST["signup-submit"])) {
         header("Location: ../signup.php?error=invaliduid&mail=".$email);
         exit();
     }
+    else if (!preg_match( "/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/", $password)) {
+        header("Location: ../signup.php?error=invalidpassword&uid=".$username."&mail=".$email);
+        exit();
+    }
     else if ($password !== $passwordRepeat) {
         header("Location: ../signup.php?error=passwordcheck&uid=".$username."&mail=".$email);
         exit();
