@@ -1,7 +1,7 @@
 <?php
 
-$db = new mysqli("localhost", "root", "", "test2000");
-mysqli_select_db($db,"test2000");
+$db = new mysqli("localhost", "root", "", "test3000");
+mysqli_select_db($db,"test3000");
 
 $sql  = "CREATE TABLE IF NOT EXISTS allusers (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -9,7 +9,3 @@ $sql  = "CREATE TABLE IF NOT EXISTS allusers (
     emailUsers varchar(100) NOT NULL,
     pwdUsers varchar(100) NOT NULL
     )";
-
-if ($db->query($sql)) {
-    echo "<p>Error: something went wrong</p>";
-} 

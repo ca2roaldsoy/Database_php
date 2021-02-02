@@ -1,7 +1,7 @@
 <?php
 
 // connect to database
-function connect ($database="test2000"){
+function connect ($database="test3000"){
 	$host = "localhost";
 	$user = "root";
 	$password = "";

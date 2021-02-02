@@ -1,8 +1,8 @@
 <?php
 
 $db = new mysqli("localhost", "root", "");
-$db->query("CREATE DATABASE test2000;");
+$db->query("CREATE DATABASE test3000;");
 
-require_once "createTable.php";
+require "createTable.php";
 
 ?>
