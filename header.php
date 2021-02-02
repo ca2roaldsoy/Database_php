@@ -11,24 +11,33 @@
               <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
               integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" 
               crossorigin="anonymous">
+              <link rel="stylesheet" href="style/style.css">
     <title>Document</title>
 </head>
-<body>
+<body class="container">
 
 <header>
+    <h1>Log in</h1>
     <?php
-        if(isset($_SESSION["userId"])) {
-        echo '<form action="includes/logout.inc.php" method="post">
-                    <button type="submit" name="logout-submit">Logout</button>
-                </form>';
+
+        if(isset($_GET["error"])) {
+        
+            if($_GET["error"] == "emptyinputs") {
+                echo "<p> Fill in all fields</p>";
+            }
+            else if($_GET["error"] == "invalidpassword") {
+                echo "<p>Wrong password</p>";
+            }
+            else if($_GET["error"] == "nouserfound") {
+                echo "<p>Sorry, no user found</p>";
+            }
+
         }
-        else {
-            echo '<form action="includes/login.inc.php" method="post">
+            echo '<form action="includes/login.inc.php" method="post" class="login">
                     <input type="text" name="mailuid" placeholder="Email...">        
                     <input type="password" name="pwd" placeholder="Password...">
-                    <button type="submit" name="login-submit">Login</button>
+                    <button type="submit" name="login-submit" class="btn btn-primary">Login</button>
                 </form>
                 <a href="signup.php">Sign Up</a>';
-        }
     ?>
 </header>
