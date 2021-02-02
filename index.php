@@ -3,7 +3,7 @@ require "header.php";
 
 ?>
 
-<main>
+<main class="container">
     <?php
      
         if(!isset($_SESSION["userId"])) {

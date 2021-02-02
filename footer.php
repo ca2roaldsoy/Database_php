@@ -1,6 +1,6 @@
 <footer>
 </footer>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="scripts/jqscript.js"></script>
 </body>
 </html>
