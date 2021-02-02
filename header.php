@@ -23,13 +23,13 @@
         if(isset($_GET["error"])) {
         
             if($_GET["error"] == "emptyinputs") {
-                echo "<p> Fill in all fields</p>";
+                echo "<p class='error'> Fill in all fields</p>";
             }
             else if($_GET["error"] == "invalidpassword") {
-                echo "<p>Wrong password</p>";
+                echo "<p class='error'>Wrong password</p>";
             }
             else if($_GET["error"] == "nouserfound") {
-                echo "<p>Sorry, no user found</p>";
+                echo "<p class='error'>Sorry, no user found</p>";
             }
 
         }

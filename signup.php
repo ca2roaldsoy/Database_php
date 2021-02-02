@@ -10,19 +10,19 @@
                 if(isset($_GET["error"])) {
 
                     if($_GET["error"] == "emptyfields") {
-                        echo "<p> Fill in all fields</p>";
+                        echo "<p class='error'> Fill in all fields</p>";
                     }
                     else if($_GET["error"] == "invalidmailuid") {
-                        echo "<p>invalid username and e-mail</p>";
+                        echo "<p class='error'>invalid username and e-mail</p>";
                     }
                     else if($_GET["error"] == "invalidemail") {
-                        echo "<p>invalid email</p>";
+                        echo "<p class='error'>invalid email</p>";
                     }
                     else if($_GET["error"] == "passwordcheck") {
-                        echo "<p>password do not match</p>";
+                        echo "<p class='error'>password do not match</p>";
                     }
                     else if($_GET["error"] == "email_exists") {
-                        echo "<p>email already exists</p>";
+                        echo "<p class='error'>email already exists</p>";
                     }
                 }
             ?>
