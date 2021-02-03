@@ -10,6 +10,6 @@ $errorColor = "#eb6262";
 $headingFont = 'Verdana';
 
 // IMAGE
-$backImg = "url('../images/landscape-with-sea-4292874_1920.jpg')";
+$backImg = "url('../images/backgr-img.jpg')";
 
 ?>
