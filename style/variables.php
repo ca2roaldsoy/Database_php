@@ -1,8 +1,3 @@
-@font-face {
-    font-family: "anirb";
-    src: url("../fonts/anirb.ttf");
-}
-
 <?php
 
 // COLORS
