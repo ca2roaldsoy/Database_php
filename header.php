@@ -13,10 +13,10 @@ session_start();
             
                 <?php
                 if (isset($_POST["login-submit"])) {
-                        echo '<link rel="stylesheet" href="../style.css">';
+                        echo '<link rel="stylesheet" type="text/css" href="../style/style.php">';
                     }
                     else {
-                        echo '<link rel="stylesheet" href="style.css">';
+                        echo '<link rel="stylesheet" type="text/css" href="style/style.php">';
                     }
               ?>
     <title>Document</title>
