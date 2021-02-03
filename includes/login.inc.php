@@ -1,4 +1,5 @@
 <?php
+require "../header.php";
 
 if (isset($_POST["login-submit"])) {
 
@@ -26,7 +27,6 @@ if (isset($_POST["login-submit"])) {
     if($stmt->num_rows() == 1) {
         $stmt->fetch();
         if(password_verify($password, $userPwd)) {
-            
             $_SESSION["userId"] = $userMail;
             $_SESSION["pass"] = $userPwd;
 
@@ -36,17 +36,17 @@ if (isset($_POST["login-submit"])) {
         else {
             $_SESSION = [];
             session_destroy();
-            header("Location: ../signup.php?error=wrongpassword");
+            header("Location: ../index.php?error=wrongpassword");
             exit();
         }
     }
     else {
         $_SESSION = [];
         session_destroy();
-        header("Location: ../signup.php?error=nouserfound");
+        header("Location: ../index.php?error=nouserfound");
         exit();
     }
-    header("Location: ../signup.php?error=loginfailed");
+    header("Location: ../index.php?error=loginfailed");
     exit();
     echo "login failed";
 }
