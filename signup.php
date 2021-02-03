@@ -43,6 +43,7 @@
             <input type="password" name="pwd-repeat" placeholder="Repeat password">
             <button type="submit" name="signup-submit" class="btn btn-primary">Sign Up</button>
         </form>
+        <a href="index.php">Log in</a>
     </main>
 
 <?php 
