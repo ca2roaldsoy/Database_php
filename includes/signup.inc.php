@@ -6,10 +6,10 @@ if(isset($_POST["signup-submit"])) {
 
     $db = connect();
 
-    $username = $_POST["uid"];
-    $email = $_POST["mail"];
-    $password = $_POST["pwd"];
-    $passwordRepeat = $_POST["pwd-repeat"];
+    $username = $db->real_escape_string($_POST["uid"]);
+    $email = $db->real_escape_string($_POST["mail"]);
+    $password = $db->real_escape_string($_POST["pwd"]);
+    $passwordRepeat = $db->real_escape_string($_POST["pwd-repeat"]);
 
     // validation
     if (empty($username) || empty($email) || empty($password) || empty($passwordRepeat)) {
@@ -39,22 +39,21 @@ if(isset($_POST["signup-submit"])) {
     }
     else {
 
-        $sql = "SELECT uidUsers FROM allusers WHERE uidUsers=?";
+        $sql = "SELECT emailUsers FROM allusers WHERE emailUsers=?";
 
         $statement = $db->prepare($sql);
-        $statement->bind_param("s", $username);
+        $statement->bind_param("s", $email);
         $statement->execute();
      
             $statement->store_result();
-            $statement->bind_result($username);
+            $statement->bind_result($email);
             
              //check if email already exists
             $resultCheck = $statement->num_rows();
             if ($resultCheck > 0) {
-                header("Location: ../signup.php?error=usertaken&mail=".$email);
+                header("Location: ../signup.php?error=usertaken&username=".$username);
                 exit();
             }
-
             else {
 
                 // insert to database
@@ -65,7 +64,8 @@ if(isset($_POST["signup-submit"])) {
                 if (!$db->prepare($sql)) {
                     header("Location: ../signup.php?error=sqlerror");
                     exit();
-                } else {
+                } 
+                else {
                     $statement->fetch();
 
                     // make password "unreadble"
@@ -74,8 +74,11 @@ if(isset($_POST["signup-submit"])) {
                     $statement = $db->prepare($sql);
                     $statement->bind_param("isss", $id, $username, $email, $hashPwd);
                     $statement->execute();
-                    echo "<p><b>New user added</b></p>";
-                    echo "<b>Sql:</b><pre>$sql</pre>";
+
+                    header("Location: ../signup.php?signup=success");
+                    echo "SUCCESS";
+                    /*echo "<p><b>New user added</b></p>";
+                    echo "<b>Sql:</b><pre>$sql</pre>";*/
                 }
             }
     }
