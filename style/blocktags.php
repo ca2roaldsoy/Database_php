@@ -12,7 +12,6 @@ body {
     background-size: cover;
     background-attachment: fixed;
     font-size: 24px;
-    color: white;
 }
 
 main {
