@@ -15,6 +15,9 @@
                     else if($_GET["error"] == "invalidmailuid") {
                         echo "<p class='error'>invalid username and e-mail</p>";
                     }
+                    else if($_GET["error"] == "usertaken") {
+                        echo "<p class='error'>Email already exist</p>";
+                    }
                     else if($_GET["error"] == "invalidemail") {
                         echo "<p class='error'>invalid email</p>";
                     }
@@ -33,19 +36,23 @@
                     else if($_GET["error"] == "email_exists") {
                         echo "<p class='error'>email already exists</p>";
                     }
+                } 
+              
+                if ($_GET["signup"] == "success") {
+                    echo "<h2 class='success'>SUCCESS</h2>";
+                    echo "<a href='index.php'>Log in</a>";
                 }
-            ?>
+                else {
+                    echo '<form action="includes/signup.inc.php" method="post" class="signup">
+                    <input type="text" name="uid" placeholder="Username">
+                    <input type="text" name="mail" placeholder="E-mail">
+                    <input type="password" name="pwd" placeholder="Password">
+                    <input type="password" name="pwd-repeat" placeholder="Repeat password">
+                    <button type="submit" name="signup-submit" class="btn btn-primary">Sign Up</button>
+                    </form>
+                    <a href="index.php">Log in</a>
+                    </main>';
+                }
 
-        <form action="includes/signup.inc.php" method="post" class="signup">
-            <input type="text" name="uid" placeholder="Username">
-            <input type="text" name="mail" placeholder="E-mail">
-            <input type="password" name="pwd" placeholder="Password">
-            <input type="password" name="pwd-repeat" placeholder="Repeat password">
-            <button type="submit" name="signup-submit" class="btn btn-primary">Sign Up</button>
-        </form>
-        <a href="index.php">Log in</a>
-    </main>
-
-<?php 
     require "footer.php";
 ?>
