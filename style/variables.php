@@ -1,8 +1,8 @@
 <?php
 
 // COLORS
-$backColor = "rgba(25, 70, 90, 0.95)";
-$btnColor = "#FFF";
+$backColor = "rgba(255, 255, 255, 0.7)";
+$successColor = "#3dd123";
 $linkColor = "#34c5ff";
 $errorColor = "#eb6262";
 
