@@ -10,13 +10,16 @@ if (isset($_POST["login-submit"])) {
     require_once "consoleLog.php";
     include "../user.php";
 
+    // connect to database
     $db = connect();
 
+    // validation
     if (empty($mailuid) || empty($password)) {
         header("Location: ../index.php?error=emptyinputs");
         exit();
     }
     
+    // Select from database
     $stmt = $db->prepare("SELECT id, uidUsers, emailUsers, pwdUsers FROM allusers WHERE emailUsers=?;");
     $stmt->bind_param("s", $mailuid);
 
@@ -26,6 +29,8 @@ if (isset($_POST["login-submit"])) {
 
     if($stmt->num_rows() == 1) {
         $stmt->fetch();
+        
+        // check if password matches hatched password 
         if(password_verify($password, $userPwd)) {
             $_SESSION["userId"] = $userMail;
             $_SESSION["pass"] = $userPwd;
@@ -34,6 +39,7 @@ if (isset($_POST["login-submit"])) {
             exit();
         }
         else {
+            // validation if password doesnt match hatched password
             $_SESSION = [];
             session_destroy();
             header("Location: ../index.php?error=wrongpassword");
@@ -41,11 +47,13 @@ if (isset($_POST["login-submit"])) {
         }
     }
     else {
+        // validation if no user is found
         $_SESSION = [];
         session_destroy();
         header("Location: ../index.php?error=nouserfound");
         exit();
     }
+    // validation if login fails
     header("Location: ../index.php?error=loginfailed");
     exit();
     echo "login failed";

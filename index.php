@@ -20,6 +20,7 @@
             }
 
         }
+            // Login Form
             echo '<form action="includes/login.inc.php" method="post" class="login">
                     <input type="text" name="mailuid" placeholder="Email...">        
                     <input type="password" name="pwd" placeholder="Password...">

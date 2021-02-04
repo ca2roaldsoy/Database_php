@@ -38,7 +38,7 @@ if(isset($_POST["signup-submit"])) {
         exit();
     }
     else {
-
+        // Select from database table = allusers
         $sql = "SELECT emailUsers FROM allusers WHERE emailUsers=?";
 
         $statement = $db->prepare($sql);

@@ -12,6 +12,7 @@ session_start();
     crossorigin="anonymous">
             
     <?php
+        // choose correct style path
         if (isset($_POST["login-submit"])) {
                 echo '<link rel="stylesheet" type="text/css" href="../style/style.php">';
         }
@@ -19,6 +20,7 @@ session_start();
             echo '<link rel="stylesheet" type="text/css" href="style/style.php">';
         }
     ?>
-<title>Login/SignUp Site</title>
+
+    <title>Login/SignUp Site</title>
 </head>
 <body class="container">

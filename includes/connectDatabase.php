@@ -7,6 +7,8 @@ function connect ($database="test3000"){
 	$password = "";
 	
 	$db = new mysqli($host, $user, $password, $database);
-	// errors?
+	if ($db->connect_error) {
+		die("Connection failed: " . $db->connect_error);
+	 }
 	return $db; 
 }

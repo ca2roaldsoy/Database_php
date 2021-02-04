@@ -12,7 +12,7 @@ function user($userId, $userName, $userMail, $password)
     echo "<li>Password: $password </li>";
     echo "</ul>";
     
-
+    // logout button
     echo '<form action="../index.php" method="POST">
     <button type="submit" name="logout-submit" class="btn btn-primary">Logout</button>
     </form>';

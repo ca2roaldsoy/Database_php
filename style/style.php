@@ -3,4 +3,5 @@
     include "variables.php";
     include "blocktags.php";
     include "classes.php";
+    include "media.php";
 ?>
