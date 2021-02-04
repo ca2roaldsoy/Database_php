@@ -45,40 +45,40 @@ if(isset($_POST["signup-submit"])) {
         $statement->bind_param("s", $email);
         $statement->execute();
      
-            $statement->store_result();
-            $statement->bind_result($email);
+        $statement->store_result();
+        $statement->bind_result($email);
             
-             //check if email already exists
-            $resultCheck = $statement->num_rows();
-            if ($resultCheck > 0) {
-                header("Location: ../signup.php?error=usertaken&username=".$username);
+        //check if email already exists
+        $resultCheck = $statement->num_rows();
+        if ($resultCheck > 0) {
+            header("Location: ../signup.php?error=usertaken&username=".$username);
+            exit();
+        }
+        else {
+
+            // insert to database
+            $sql = "INSERT INTO allusers(id, uidUsers, emailUsers, pwdUsers) VALUES(?, ?, ?, ?)";
+ 
+            $statement = $db->prepare($sql);
+ 
+            if (!$db->prepare($sql)) {
+                header("Location: ../signup.php?error=sqlerror");
                 exit();
-            }
+            } 
             else {
+                $statement->fetch();
 
-                // insert to database
-                $sql = "INSERT INTO allusers(id, uidUsers, emailUsers, pwdUsers) VALUES(?, ?, ?, ?)";
-        
+                // make password "unreadble"
+                $hashPwd = password_hash($password, PASSWORD_DEFAULT);
+
                 $statement = $db->prepare($sql);
-        
-                if (!$db->prepare($sql)) {
-                    header("Location: ../signup.php?error=sqlerror");
-                    exit();
-                } 
-                else {
-                    $statement->fetch();
+                $statement->bind_param("isss", $id, $username, $email, $hashPwd);
+                $statement->execute();
 
-                    // make password "unreadble"
-                    $hashPwd = password_hash($password, PASSWORD_DEFAULT);
-
-                    $statement = $db->prepare($sql);
-                    $statement->bind_param("isss", $id, $username, $email, $hashPwd);
-                    $statement->execute();
-
-                    header("Location: ../signup.php?signup=success");
-                    echo "SUCCESS";
-                }
+                header("Location: ../signup.php?signup=success");
+                echo "SUCCESS";
             }
+        }
     }
 }
 
