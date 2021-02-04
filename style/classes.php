@@ -11,9 +11,9 @@
 
 .error {
     color: <?=$errorColor?>;
-    font-weight: 600;
     margin: 0;
     padding: 0;
+    font-size: 18px;
 }
 
 .error > li {
@@ -22,4 +22,8 @@
 
 .credentials {
     flex-direction: column;
+}
+
+.success {
+    color: <?=$successColor?>;
 }
