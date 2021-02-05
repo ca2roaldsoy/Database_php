@@ -8,7 +8,7 @@ function user($userId, $userName, $userMail, $password)
     echo "<ul>";
     echo "<li>ID: $userId</li>";
     echo "<li>Name: $userName </li>";
-    echo "<li>E-Mail: $userMail </li>";
+    echo "<li>E-mail: $userMail </li>";
     echo "<li>Password: $password </li>";
     echo "</ul>";
     
